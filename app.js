@@ -52,15 +52,15 @@ const PORT = process.env.PORT || 5000;
 app.listen(PORT, console.log(`server is running on port ${PORT}`));
 
 
-const isProduction = process.env.NODE_ENV === 'production'
-const origin = {
-    origin: isProduction ? 'https://www.thelighthousesaviourproject.com' : '*',
-}
+// const isProduction = process.env.NODE_ENV === 'production';
+// const origin = {
+//     origin: isProduction ? 'https://www.thelighthousesaviourproject.com' : '*',
+// };
 
 const limiter = rateLimit({
     windowMs: 1 * 60 * 1000, // 1 minute
     max: 5, // 5 requests,
-})
+});
 
 app.use(limiter)
 
