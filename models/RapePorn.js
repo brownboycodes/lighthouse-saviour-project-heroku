@@ -22,4 +22,7 @@ const RapePorn = db.define(process.env.DB_TABLE4, {
     freezeTableName: true,
 });
 
+RapePorn.sync();
+console.log("The table for the RapePorn model was just created if it didn't exist before!");
+
 module.exports = RapePorn;

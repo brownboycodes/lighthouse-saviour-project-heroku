@@ -13,4 +13,7 @@ const Isolated = db.define(process.env.DB_TABLE1, {
     freezeTableName: true,
 });
 
+Isolated.sync();
+console.log("The table for the Isolated model was just created if it didn't exist before!");
+
 module.exports = Isolated;
