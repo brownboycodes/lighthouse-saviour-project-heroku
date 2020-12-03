@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+
+    <meta name="description" content="the lighthouse saviour project: a crowdsourced minority report to identify potentially life-threatening locations
+and take precautions against them" />
+    <meta name="keywords" content="minority report, women safety, crime prevention, safety map, map, futuristic apps,
+the lighthouse saviour project, thelighthousesaviourproject">
+
+    <meta name="robots" content="index, follow" />
+    <meta name="googlebot" content="index, follow" />
+    <meta name="google" content="nositelinkssearchbox, notranslate, nopagereadaloud" />
+
+    <title>the lighthouse saviour project</title>
+
+
+
+
+    <link rel="shortcut icon" type="image/png" href="/img/thelighthouse64px.png" />
+    <link rel="stylesheet" href="/css/global_fonts.css">
+    <link rel="stylesheet" href="/css/landing.css">
+    <link rel="stylesheet" href="/css/responsiveLanding.css">
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+        integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+        crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+        integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+        crossorigin=""></script>
+
+</head>
+
+<body>
+    <div id="menu-container">
+        <div id="logo">
+            <a href="/" draggable="false">
+                <img id="logo-box" src="/img/thelighthouse1000px.png" width="64px" height="64px" alt="my app logo">
+
+            </a>
+            <!-- <div id="logo-sub"></div> -->
+            <div>a crowdsourced minority report</div>
+        </div>
+        <nav>
+            <!--  -->
+            <li>
+                <a href="/notes/idea" draggable="false">PROJECT BRIEFING</a>
+            </li>
+
+            <li>
+                <a href="/notes/creators" draggable=" false">A PERSONAL NOTE</a>
+            </li>
+        </nav>
+        <div>
+            <label class="check-container">this checkbox will mark locations on map where people watch rape pornography
+                (testing & incomplete, only showing Uttar Pradesh for now)
+                <input type="checkbox" id="checker" onclick="rapeZone()">
+                <span class="checkmark"></span>
+            </label>
+        </div>
+
+
+        <span id="map-buttons">
+            <button title="change map style" onclick="mapChanger()">change map</button>
+            <button onclick="getGps()">GPS</button>
+        </span>
+        <div id="locales">
+            <li>
+                <div><img src="/img/pervert_alert48px.png" alt="isolated places"></div>
+                <div class="location-data">
+                    <div class="data-locales" style="width: 100%;"></div>
+                    <div style="font-size: 9pt;">places where people feel isolated</div>
+                </div>
+            </li>
+            <li>
+                <div><img src="img/gone_bad48px.png" alt="bad guys hangout here"></div>
+                <div class="location-data">
+                    <div class="data-locales" style="width: 100%;"></div>
+                    <div style="font-size: 9pt;">places where people witnessed bad people</div>
+                </div>
+            </li>
+            <li>
+                <div><img src="img/hoodlum_hangout48px.png" alt="pervert alert"></div>
+                <div class="location-data">
+                    <div class="data-locales" style="width: 100%;"></div>
+                    <div style="font-size: 9pt;">places where people experienced lewd behaviour</div>
+                </div>
+            </li>
+            <div id="instructions" onclick="showInstructions()">instructions</div>
+        </div>
+    </div>
+    <div id="map-portion">
+        <button id="toggle" title="close menu" onclick="toggler()">&#10096;</button>
+
+        <div id="right-click">
+            <div>mark this location for</div>
+            <div class="options" onclick="isolatedPlace()">isolated place</div>
+            <div class="options" onclick="badPeople()">bad people</div>
+            <div class="options" onclick="lewdBehaviour()">lewd behaviour</div>
+        </div>
+        <div id="map-container">
+
+        </div>
+
+
+    </div>
+    <div id="instructionsBox">
+        <div style="background-color: blue;height: 40px;"><button onclick="closeInstructionsBox()">X</button>
+        </div>
+        <div class="instructions-list">
+            <!-- <li>the lighthouse saviour project: a crowdsourced minority report</li> -->
+            <li>select the option <span>isolated places</span> to mark a location where you feel alone, isolated or
+                someplace where people don't go</li>
+            <li>select the option <span>bad people</span> to mark locations where your neighbourhood-wannabe-gangsters,
+                delinquents, street thugs, corrupt officials hangout/operate</li>
+            <li>select the option <span>lewd behaviour</span> where you have experienced it</li>
+            <li>first set the gps by clicking on the button on the menu bar on the left otherwise you won't be able to
+                mark any location (once in a while the GPS may show a location where you are actually not present but
+                don't worry
+                that's alright)</li>
+            <li>drag over to the place you want to report</li>
+            <li>zoom in as much as possible, on the black and white map it's like 3m/10ft scale and on the colored map
+                its 20m/50ft scale if you zoom-in any further on the coloured map. it will crash, so use cautiously</li>
+            <li>right click (or if viewing from any mobile, device tap and hold the point you want to mark until a
+                dialog box appears) and select the type of location you want to report from the right click menu</li>
+            <li>you can change the map style by clicking on the change map button next to the GPS button in the menu bar
+            </li>
+            <li>keep in mind you cannot mark the same location twice</li>
+            <li>and you cannot mark locations outside 55.5km radius from your GPS location</li>
+            <li>YOU ARE ONLY REQUIRED TO REPORT LOCATIONS AROUND YOUR PLACE YOU ABSOLUTELY SURE ABOUT</li>
+
+        </div>
+    </div>
+    <script defer src="/js/landing.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,32 @@
+/** for smartphone screen resolution 360pxX760px */
+@media only screen and (min-width: 300px) and (max-width: 600px) {
+  body {
+    width: 100%;
+    height: 100%;
+  }
+
+  #menu-container {
+    width: 60vw;
+  }
+  #map-portion {
+    width: 40vw;
+  }
+
+  #logo div {
+    font-size: 9pt;
+  }
+
+  #menu-container nav li a {
+    font-size: 11pt;
+  }
+  #menu-container nav li a:hover {
+    font-size: 13pt;
+  }
+
+  #para {
+    width: 84vw;
+  }
+  #para img {
+    max-width: 90%;
+  }
+}

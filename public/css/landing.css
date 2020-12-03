@@ -1,0 +1,444 @@
+body {
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
+  bottom: 0;
+  position: fixed;
+}
+
+/* TODO: styling the menubar */
+#menu-container {
+  position: absolute;
+  height: inherit;
+  width: 23vw;
+  float: left;
+  /* background-color: white; */
+  background: linear-gradient(
+    120deg,
+    rgb(249, 250, 250) 70%,
+    rgb(233, 241, 241)
+  );
+  font-size: 12pt;
+  font-family: sans-serif;
+  display: flex;
+  flex-direction: column;
+  cursor: url("/img/cursor16.png"), auto;
+  /* box-shadow: 2px 2px 3px rgb(63, 61, 77); */
+  box-shadow: 2px 2px 4px rgb(63, 61, 77);
+  z-index: 1;
+}
+#logo {
+  margin-top: 5px;
+  margin-left: 15px;
+}
+#logo a {
+  text-decoration: none;
+  cursor: url("/img/cursor16.png"), auto;
+  font-family: "nunito", sans-serif;
+}
+#logo a img {
+  cursor: url("/img/finger24.png"), auto;
+}
+#logo div {
+  /* text-decoration: none; */
+  font-size: 12pt;
+  height: 12px;
+  font-weight: 600;
+  font-family: "nunito", sans-serif;
+  cursor: url("/img/cursor16.png"), auto;
+}
+
+#menu-container nav {
+  list-style: none;
+  position: relative;
+  /* margin: 15px; */
+  margin-top: 10px;
+  top: 20px;
+  height: 180px;
+  width: inherit;
+  text-decoration: none;
+  cursor: url("/img/cursor16.png"), auto;
+}
+#menu-container nav li {
+  margin-top: 15px;
+  margin-left: 15px;
+  cursor: url("/img/cursor16.png"), auto;
+}
+#menu-container nav li a {
+  font-size: 16pt;
+  font-family: "nunito";
+  font-weight: 800;
+  text-decoration: none;
+  color: black;
+  cursor: url("/img/finger24.png"), auto;
+}
+#menu-container nav li a:hover {
+  font-size: 19pt;
+}
+#map-buttons {
+  margin: 15px;
+  height: 50px;
+  width: 152px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  outline: none;
+}
+#map-buttons button {
+  padding: 10px;
+  height: 36px;
+  width: 75px;
+  background-color: black;
+  color: white;
+  font-family: sans-serif;
+  border: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  outline: none;
+  cursor: url("/img/finger24.png"), auto;
+  font-size: 10pt;
+  letter-spacing: 1pt;
+}
+#map-buttons button:first-child {
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
+}
+#map-buttons button:last-child {
+  border-radius: 0px 6px 6px 0px;
+}
+
+#locales {
+  width: inherit;
+  height: 185px;
+  border-top: 1px solid grey;
+  /* border-bottom: 1px solid grey; */
+}
+#locales li {
+  list-style: none;
+  width: fit-content;
+  margin-left: 15px;
+  margin-top: 8px;
+  font-family: "nunito";
+  font-size: 10pt;
+  display: grid;
+  grid-template-rows: 48px;
+  grid-template-columns: 56px 180px;
+  column-gap: 10px;
+  padding: 5px;
+  background: linear-gradient(
+    120deg,
+    rgb(249, 250, 250) 70%,
+    rgb(233, 241, 241)
+  );
+  box-shadow: 2px 3px 8px rgb(233, 241, 241), -2px -3px 8px rgb(249, 250, 250);
+}
+.location-data {
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+#instructions {
+  margin-left: 15px;
+  margin-top: 6px;
+  /* border-top: 1px solid grey; */
+  font-size: 11pt;
+  font-family: "nunito", sans-serif;
+  color: blue;
+  cursor: url("/img/finger24.png"), auto;
+  padding: 3px;
+}
+#instructions:hover {
+  text-decoration: underline;
+}
+
+#instructionsBox {
+  position: fixed;
+  display: none;
+  /* display: grid; */
+  /* grid-template-rows: 10% 90%; */
+  grid-template-rows: 40px 460px;
+  grid-template-columns: 560px;
+  width: 560px;
+  height: 500px;
+  z-index: 4;
+  background-color: white;
+  left: 500px;
+  top: 100px;
+  font-family: "nunito", sans-serif;
+  font-size: 10pt;
+  cursor: url("/img/cursor16.png"), auto;
+  border: 1px solid rgb(107, 107, 139);
+  box-shadow: 3px 3px 5px rgb(129, 129, 163);
+}
+#instructionsBox div button {
+  font-family: sans-serif;
+  cursor: url("/img/finger24.png"), auto;
+  float: right;
+  font-size: 20pt;
+  margin: 3px;
+  color: white;
+  background-color: inherit;
+  border: none;
+  outline: none;
+}
+.instructions-list {
+  overflow: auto;
+}
+
+#instructionsBox div li {
+  list-style: upper-roman;
+  font-size: 12pt;
+  padding-top: 10px;
+  margin: 5px;
+}
+#instructionsBox div li span {
+  background-color: yellow;
+}
+/* TODO: styling the map section */
+#map-portion {
+  height: 100vh;
+  width: 77vw;
+  float: right;
+  position: relative;
+  margin: 0;
+  display: flex;
+  /* z-index: -1; */
+  bottom: 0;
+  cursor: url("/img/cursor24.png"), auto;
+}
+
+#map-container {
+  height: inherit;
+  width: inherit;
+  bottom: 0;
+  position: relative;
+  z-index: 0;
+  bottom: 0;
+  cursor: url("/img/cursor24.png"), auto;
+  /* float: right; */
+  /* background-color: blueviolet; */
+}
+
+/* TODO: styling the right click menu */
+#right-click {
+  position: absolute;
+  height: 170px;
+  width: 125px;
+  z-index: 1;
+  background-color: white;
+  display: none;
+  box-shadow: 2px 2px 3px rgb(42, 40, 53);
+  font-family: "nunito", sans-serif;
+  font-size: 10pt;
+}
+.options {
+  margin-top: 10px;
+}
+.options:hover {
+  background-color: skyblue;
+  font-weight: bold;
+  cursor: url("/img/finger24.png"), auto;
+}
+
+/* TODO: styling the menubar toggle button */
+#toggle {
+  width: 20px;
+  height: 60px;
+  position: absolute;
+  z-index: 1;
+  margin: 8px;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 11pt;
+  background-color: rgb(25, 25, 25);
+  box-shadow: 2px 2px 3px rgb(63, 61, 77);
+  cursor: url("/img/finger24.png"), auto;
+  padding: 1px;
+  border: 1px solid rgb(141, 140, 140);
+  border-radius: 2px;
+  outline: none;
+}
+
+/** zoom control */
+
+.leaflet-control-zoom-in,
+.leaflet-control-zoom-out {
+  font: bold 18px "Lucida Console", Monaco, monospace;
+  text-indent: 1px;
+  /* border: 2px solid white; */
+  /* background-color: black; */
+  box-shadow: 2px 3px 5px rgb(66, 66, 66);
+  cursor: url("/img/finger24.png"), auto;
+  background-color: black;
+  color: white;
+}
+.leaflet-control-zoom-out {
+  /* font-size: 20px; */
+  font-size: 16px;
+  /* background-color: black; */
+  cursor: url("/img/finger24.png"), auto;
+}
+
+.leaflet-touch .leaflet-control-zoom-in {
+  /* font-size: 22px; */
+  font-size: 16px;
+  background-color: black;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: url("/img/finger24.png"), auto;
+}
+.leaflet-touch .leaflet-control-zoom-out {
+  /* font-size: 24px; */
+  font-size: 16px;
+  background-color: black;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: url("/img/finger24.png"), auto;
+}
+
+.leaflet-control-zoom-in.leaflet-disabled {
+  background-color: black;
+}
+a.leaflet-control-zoom-in.leaflet-disabled {
+  background-color: black;
+}
+.leaflet-disabled {
+  background-color: black;
+}
+
+.leaflet-bar a.leaflet-disabled {
+  background-color: black;
+  color: white;
+}
+/* zoom hover */
+.leaflet-touch .leaflet-control-zoom-in:hover {
+  /* background-color: rgb(51, 50, 50); */
+  background-color: rgb(25, 25, 25);
+  color: white;
+  font-size: 22px;
+  cursor: url("/img/finger24.png"), auto;
+}
+.leaflet-touch .leaflet-control-zoom-out:hover {
+  /* font-size: 24px; */
+  font-size: 22px;
+  /* background-color: rgb(51, 50, 50); */
+  background-color: rgb(25, 25, 25);
+  color: white;
+  cursor: url("/img/finger24.png"), auto;
+}
+
+.leaflet-marker-icon.marker-class {
+  cursor: url("/img/cursor24.png"), auto;
+}
+.leaflet-marker-icon.leaflet-zoom-animated.leaflet-interactive.marker-class {
+  cursor: url("/img/cursor24.png"), auto;
+  outline: none;
+}
+
+.leaflet-control-attribution.leaflet-control {
+  cursor: url("/img/finger24.png"), auto;
+}
+.leaflet-control-attribution.leaflet-control a {
+  cursor: url("/img/finger24.png"), auto;
+}
+
+.leaflet-control-zoom.leaflet-bar.leaflet-control {
+  cursor: url("/img/finger24.png"), auto;
+}
+
+.leaflet-control-scale-line {
+  cursor: url("/img/cursor24.png"), auto;
+}
+.leaflet-control-scale.leaflet-control {
+  cursor: url("/img/cursor24.png"), auto;
+}
+
+/** Customize the label (the container) */
+.check-container {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 10px;
+  cursor: url("/img/finger24.png"), auto;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  margin-left: 15px;
+  font-family: "nunito";
+  font-size: 9pt;
+  width: inherit;
+}
+
+/* Hide the browser's default checkbox */
+.check-container input {
+  position: absolute;
+  opacity: 0;
+  cursor: url("/img/finger24.png"), auto;
+  height: 0;
+  width: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+}
+
+/* On mouse-over, add a grey background color */
+.check-container:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+.check-container input:checked ~ .checkmark {
+  /* background-color: #2196F3; */
+  background-color: black;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.check-container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.check-container .checkmark:after {
+  left: 9px;
+  top: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+path.leaflet-interactive {
+  cursor: url("/img/cursor24.png"), auto;
+  color: red;
+  -webkit-user-drag: none;
+}

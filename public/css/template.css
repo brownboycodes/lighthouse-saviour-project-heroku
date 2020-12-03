@@ -1,0 +1,136 @@
+body {
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
+  bottom: 0;
+  position: fixed;
+}
+
+/* TODO: styling the menubar */
+#menu-container {
+  position: absolute;
+  height: inherit;
+  width: 23vw;
+  float: left;
+  /* background-color: white; */
+  background: linear-gradient(
+    120deg,
+    rgb(249, 250, 250) 70%,
+    rgb(233, 241, 241)
+  );
+  font-size: 12pt;
+  font-family: sans-serif;
+  display: flex;
+  flex-direction: column;
+  cursor: url("/img/cursor16.png"), auto;
+  /* box-shadow: 2px 2px 3px rgb(63, 61, 77); */
+  box-shadow: 2px 2px 4px rgb(63, 61, 77);
+  z-index: 1;
+}
+#logo {
+  margin-top: 5px;
+  margin-left: 15px;
+}
+#logo a {
+  text-decoration: none;
+  cursor: url("/img/cursor16.png"), auto;
+  font-family: "nunito", sans-serif;
+}
+#logo a img {
+  cursor: url("/img/finger24.png"), auto;
+}
+#logo div {
+  /* text-decoration: none; */
+  font-size: 12pt;
+  height: 12px;
+  font-weight: 600;
+  font-family: "nunito", sans-serif;
+  cursor: url("/img/cursor16.png"), auto;
+}
+
+#menu-container nav {
+  list-style: none;
+  position: relative;
+  /* margin: 15px; */
+  margin-top: 10px;
+  top: 20px;
+  height: 210px;
+  width: inherit;
+  text-decoration: none;
+  cursor: url("/img/cursor16.png"), auto;
+}
+#menu-container nav li {
+  margin-top: 15px;
+  margin-left: 15px;
+  cursor: url("/img/cursor16.png"), auto;
+}
+#menu-container nav li a {
+  font-size: 16pt;
+  font-family: "nunito";
+  font-weight: 800;
+  text-decoration: none;
+  color: black;
+  cursor: url("/img/finger24.png"), auto;
+}
+#menu-container nav li a:hover {
+  font-size: 19pt;
+}
+
+/* TODO: styling the map section */
+#map-portion {
+  height: 100vh;
+  width: 77vw;
+  float: right;
+  position: relative;
+  margin: 0;
+  display: flex;
+  /* z-index: -1; */
+  bottom: 0;
+  cursor: url("/img/cursor24.png"), auto;
+  overflow: auto;
+}
+
+#map-container {
+  height: inherit;
+  width: inherit;
+  bottom: 0;
+  position: relative;
+  z-index: 0;
+  bottom: 0;
+  cursor: url("/img/cursor24.png"), auto;
+  /* float: right; */
+  /* background-color: blueviolet; */
+  display: flex;
+  justify-content: center;
+}
+
+/* TODO: styling the menubar toggle button */
+#toggle {
+  width: 20px;
+  height: 60px;
+  position: fixed;
+  z-index: 1;
+  margin: 8px;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 11pt;
+  background-color: rgb(25, 25, 25);
+  box-shadow: 2px 2px 3px rgb(63, 61, 77);
+  cursor: url("/img/finger24.png"), auto;
+  padding: 1px;
+  border: 1px solid rgb(141, 140, 140);
+  border-radius: 2px;
+  outline: none;
+}
+
+#para {
+  width: 850px;
+  margin: 40px;
+  font-family: "nunito", sans-serif;
+}
+#para p span {
+  background-color: yellow;
+  font-weight: 700;
+}
