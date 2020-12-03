@@ -148,7 +148,7 @@ if (window.matchMedia("(min-width: 300px) and (max-width: 600px)").matches) {
     }
 
 
-toggler = () => {
+    toggler = () => {
         //? check if menubar is open or closed
         if (toggleCount === 0) {
             //TODO: this part runs if menubar is open
@@ -176,109 +176,109 @@ toggler = () => {
 
     };
 } else {
-//* if user refreshes while menu is closed or open
-//* state of menubar remains same as before refresh
-if (sessionStorage.getItem('menuStatus') === null || sessionStorage.getItem('menuStatus') === 'open') {
-   toggle.innerHTML = "&#10096;";
-   toggle.title = "close menu";
-   mapContainer.parentElement.style.float = 'right';
-   mapContainer.style.width = '77vw';
-   mapContainer.parentElement.style.width = '77vw';
-   menubar.style.display = 'block';
-   menuSize = menubar.offsetWidth;
-   toggleCount = 0;
-} else {
-   menubar.style.display = 'none';
-   mapContainer.parentElement.style.width = '100vw';
-   mapContainer.style.width = '100vw';
-   mapContainer.parentElement.style.float = 'none';
-   menuSize = menubar.offsetWidth;
-   toggle.innerHTML = "&#10097;";
-   toggle.title = "open menu";
-   toggleCount = 1;
-}
+    //* if user refreshes while menu is closed or open
+    //* state of menubar remains same as before refresh
+    if (sessionStorage.getItem('menuStatus') === null || sessionStorage.getItem('menuStatus') === 'open') {
+        toggle.innerHTML = "&#10096;";
+        toggle.title = "close menu";
+        mapContainer.parentElement.style.float = 'right';
+        mapContainer.style.width = '77vw';
+        mapContainer.parentElement.style.width = '77vw';
+        menubar.style.display = 'block';
+        menuSize = menubar.offsetWidth;
+        toggleCount = 0;
+    } else {
+        menubar.style.display = 'none';
+        mapContainer.parentElement.style.width = '100vw';
+        mapContainer.style.width = '100vw';
+        mapContainer.parentElement.style.float = 'none';
+        menuSize = menubar.offsetWidth;
+        toggle.innerHTML = "&#10097;";
+        toggle.title = "open menu";
+        toggleCount = 1;
+    }
 
 
-toggler = () => {
-   //? check if menubar is open or closed
-   if (toggleCount === 0) {
-       //TODO: this part runs if menubar is open
-       menubar.style.display = 'none';
-       mapContainer.parentElement.style.width = '100vw';
-       mapContainer.style.width = '100vw';
-       mapContainer.parentElement.style.float = 'none';
-       menuSize = menubar.offsetWidth;
-       toggle.innerHTML = "&#10097;";
-       toggle.title = "open menu";
-       toggleCount = 1;
-       sessionStorage.setItem('menuStatus', 'close');
-   } else {
-       //TODO: this part runs if menubar is closed
-       toggleCount = 0;
-       toggle.innerHTML = "&#10096;";
-       toggle.title = "close menu";
-       mapContainer.parentElement.style.float = 'right';
-       mapContainer.style.width = '77vw';
-       mapContainer.parentElement.style.width = '77vw';
-       menubar.style.display = 'block';
-       menuSize = menubar.offsetWidth;
-       sessionStorage.setItem('menuStatus', 'open');
-   }
+    toggler = () => {
+        //? check if menubar is open or closed
+        if (toggleCount === 0) {
+            //TODO: this part runs if menubar is open
+            menubar.style.display = 'none';
+            mapContainer.parentElement.style.width = '100vw';
+            mapContainer.style.width = '100vw';
+            mapContainer.parentElement.style.float = 'none';
+            menuSize = menubar.offsetWidth;
+            toggle.innerHTML = "&#10097;";
+            toggle.title = "open menu";
+            toggleCount = 1;
+            sessionStorage.setItem('menuStatus', 'close');
+        } else {
+            //TODO: this part runs if menubar is closed
+            toggleCount = 0;
+            toggle.innerHTML = "&#10096;";
+            toggle.title = "close menu";
+            mapContainer.parentElement.style.float = 'right';
+            mapContainer.style.width = '77vw';
+            mapContainer.parentElement.style.width = '77vw';
+            menubar.style.display = 'block';
+            menuSize = menubar.offsetWidth;
+            sessionStorage.setItem('menuStatus', 'open');
+        }
 
-};
+    };
 }
 
 
 //TODO: right click state management
 const rightClick = document.getElementById('right-click')
 mapContainer.addEventListener('contextmenu', (event) => {
-   event.preventDefault();
+    event.preventDefault();
 
-   coords = myMap.mouseEventToLatLng(event);
-   eventLat = coords.lat;
-   eventLong = coords.lng;
+    coords = myMap.mouseEventToLatLng(event);
+    eventLat = coords.lat;
+    eventLong = coords.lng;
 
-   if (sessionStorage.getItem('gpsStatus') === null) {
-       alert('set GPS first!');
-   } else {
-
-       if (event.target.className === "leaflet-marker-icon leaflet-zoom-animated leaflet-interactive marker-class") {
-           alert('you cannot mark the same location once again !');
-       } else if (eventLat < latDown || eventLat > latUp || eventLong < longLeft || eventLong > longRight) {
-        alert("you can only mark locations within a 55.5 km radius !");
-        rightClick.style.display = 'none';
+    if (sessionStorage.getItem('gpsStatus') === null) {
+        alert('set GPS first!');
     } else {
-        //TODO: if right click crosses the map width
-        if (event.clientX + rightClick.offsetWidth > screen.availWidth) {
-            rightClick.style.left = event.clientX - rightClick.offsetWidth - menuSize + 'px';
 
-            //TODO: if right click crosses the map height
-            if ((event.clientY + rightClick.offsetHeight) > screen.availHeight) {
-                rightClick.style.top = event.clientY - rightClick.offsetHeight + 'px';
-            } else {
-                //TODO: if right click doesn't cross the map height
-                rightClick.style.top = event.clientY + 'px';
-            }
-            rightClick.style.display = 'block';
-
-        } else if ((event.clientY + rightClick.offsetHeight) > screen.availHeight) {
-            //TODO: if right click crosses the map height
-            rightClick.style.top = event.clientY - rightClick.offsetHeight + 'px';
-            rightClick.style.left = event.clientX - menuSize + 'px';
-
-            rightClick.style.display = 'block';
-
-        } else if ((event.clientX - menuSize - rightClick.offsetWidth) < 0) {
-            //TODO: if right click crosses the map start from the left
+        if (event.target.className === "leaflet-marker-icon leaflet-zoom-animated leaflet-interactive marker-class") {
+            alert('you cannot mark the same location once again !');
+        } else if (eventLat < latDown || eventLat > latUp || eventLong < longLeft || eventLong > longRight) {
+            alert("you can only mark locations within a 55.5 km radius !");
             rightClick.style.display = 'none';
-
         } else {
-            //TODO: if right click is made anywhere in between the map boundaries
-            rightClick.style.left = event.clientX - menuSize + 'px';
-            rightClick.style.top = event.clientY + 'px';
+            //TODO: if right click crosses the map width
+            if (event.clientX + rightClick.offsetWidth > screen.availWidth) {
+                rightClick.style.left = event.clientX - rightClick.offsetWidth - menuSize + 'px';
 
-            rightClick.style.display = 'block';
-        }
+                //TODO: if right click crosses the map height
+                if ((event.clientY + rightClick.offsetHeight) > screen.availHeight) {
+                    rightClick.style.top = event.clientY - rightClick.offsetHeight + 'px';
+                } else {
+                    //TODO: if right click doesn't cross the map height
+                    rightClick.style.top = event.clientY + 'px';
+                }
+                rightClick.style.display = 'block';
+
+            } else if ((event.clientY + rightClick.offsetHeight) > screen.availHeight) {
+                //TODO: if right click crosses the map height
+                rightClick.style.top = event.clientY - rightClick.offsetHeight + 'px';
+                rightClick.style.left = event.clientX - menuSize + 'px';
+
+                rightClick.style.display = 'block';
+
+            } else if ((event.clientX - menuSize - rightClick.offsetWidth) < 0) {
+                //TODO: if right click crosses the map start from the left
+                rightClick.style.display = 'none';
+
+            } else {
+                //TODO: if right click is made anywhere in between the map boundaries
+                rightClick.style.left = event.clientX - menuSize + 'px';
+                rightClick.style.top = event.clientY + 'px';
+
+                rightClick.style.display = 'block';
+            }
 
 
 
@@ -438,7 +438,7 @@ let rapeZone = async () => {
 
         for (let item of rapeData) {
 
-            L.circle([parseFloat(item.latitude), parseFloat(item.longitude)], { radius: 10000 }).setStyle({ color: 'red' }).addTo(myMap).bindTooltip>
+            L.circle([parseFloat(item.latitude), parseFloat(item.longitude)], { radius: 10000 }).setStyle({ color: 'red' }).addTo(myMap).bindTooltip(item.city).openTooltip();
 
         }
 
