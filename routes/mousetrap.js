@@ -1,10 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const path = require("path");
-// let bodyParser = require("body-parser");
-//TODO: create application/json parser
-// let jsonParser = bodyParser.json;
-const db = require("../config/database");
+
 // const Mousetrap = require('../models/Mousetrap');
 
 //*getting individual tables
