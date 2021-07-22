@@ -1,3 +1,4 @@
+/*
 const { Sequelize, DataTypes } = require('sequelize');
 
 const db = require('../config/database');
@@ -17,7 +18,26 @@ Badpeople.sync();
 console.log("The table for the Badpeople model was just created if it didn't exist before!");
 
 module.exports = Badpeople;
+*/
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
 
+const badPeopleSchema = new Schema(
+  {
+    latitude: {
+      type: String,
+      required: true,
+    },
+    longitude: {
+      type: String,
+      required: true,
+    },
+  },
+  { timestamps: true }
+);
 
+const Badpeople = mongoose.model("Badpeople", badPeopleSchema);
+
+module.exports = Badpeople;
 
 
