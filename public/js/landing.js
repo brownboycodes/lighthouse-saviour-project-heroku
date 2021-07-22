@@ -1,8 +1,4 @@
-/*
-alert(
-  "This app is undergoing maintainence at the moment and therefore previously reported locations are not available for viewing and also any location which you might report now will not be recorded in our databases.\nIncovinience is regretted. We will resolve this issue soon"
-);
-*/
+
 let mapContainer = document.getElementById("map-container");
 
 //TODO: declaring variables for later use
