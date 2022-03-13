@@ -85,10 +85,7 @@ router.get("/admin", (req, res) => {
   res.send("access denied chum! back off!!!");
 });
 
-router.get("/notes/idea", (req, res) => res.render("briefing"));
 
-router.get("/notes/creators", (req, res) => res.render("about"));
-router.get("/info", (req, res) => res.render("attributions"));
 router.get("*", (req, res) => res.render("404"));
 
 module.exports = router;
